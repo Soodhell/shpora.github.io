@@ -149,11 +149,11 @@
 <!-- Вкладки для переключения -->
 <div class="tabs-container">
     <div class="tabs">
-        <button class="tab-button active" onclick="switchTab('word')">Microsoft Word</button>
-        <button class="tab-button" onclick="switchTab('excel')">Microsoft Excel</button>
-        <button class="tab-button" onclick="switchTab('access')">Microsoft Access</button>
-        <button class="tab-button" onclick="switchTab('outlook')">Microsoft Outlook</button>
-        <button class="tab-button" onclick="switchTab('publisher')">Microsoft Publisher</button>
+        <button class="tab-button active" onclick="switchTab(event, 'word')">Microsoft Word</button>
+        <button class="tab-button" onclick="switchTab(event, 'excel')">Microsoft Excel</button>
+        <button class="tab-button" onclick="switchTab(event, 'access')">Microsoft Access</button>
+        <button class="tab-button" onclick="switchTab(event, 'outlook')">Microsoft Outlook</button>
+        <button class="tab-button" onclick="switchTab(event, 'publisher')">Microsoft Publisher</button>
     </div>
 </div>
 
@@ -1545,20 +1545,23 @@
 </div>
 
 <script>
-    function switchTab(tabName) {
-        // Скрыть все вкладки
-        document.querySelectorAll('.tab-content').forEach(function(tab) {
-            tab.classList.remove('active');
-        });
-        // Убрать активный класс у всех кнопок
-        document.querySelectorAll('.tab-button').forEach(function(btn) {
-            btn.classList.remove('active');
-        });
-        // Показать выбранную вкладку
-        document.getElementById('tab-' + tabName).classList.add('active');
-        // Активировать соответствующую кнопку
-        event.target.classList.add('active');
-    }
+    function switchTab(event, tabName) {
+    // Скрыть все вкладки
+    document.querySelectorAll('.tab-content').forEach(function(tab) {
+        tab.classList.remove('active');
+    });
+
+    // Убрать активный класс у всех кнопок
+    document.querySelectorAll('.tab-button').forEach(function(btn) {
+        btn.classList.remove('active');
+    });
+
+    // Показать выбранную вкладку
+    document.getElementById('tab-' + tabName).classList.add('active');
+
+    // Активировать кнопку
+    event.target.classList.add('active');
+}
 </script>
 
 </body>
